@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Insight Maker - Dinámica de Sistemas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">Taller Insight Maker</h1>
+            <div class="nav-menu">
+                <button class="nav-item" onclick="showSection('intro')">Introducción</button>
+                <button class="nav-item" onclick="showSection('primitives')">Primitivos</button>
+                <button class="nav-item" onclick="showSection('sir')">Modelo SIR</button>
+                <button class="nav-item" onclick="showSection('business')">Modelo Negocio</button>
+                <button class="nav-item" onclick="showSection('resources')">Recursos</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Introducción -->
+        <section id="intro" class="section active">
+            <div class="intro-header">
+                <h1>Taller: Modelado con Insight Maker</h1>
+                <p class="intro-subtitle">Aprende Dinámica de Sistemas para estudiantes de maestría</p>
+            </div>
+            
+            <div class="workshop-overview">
+                <div class="card">
+                    <div class="card__body">
+                        <h2>Estructura del Taller (2 horas)</h2>
+                        <div class="timeline-image">
+                            <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/5064deec0cc37e8e27dd00045c9594aa/79e58029-3725-4dd4-a42f-085a3eec6fa0/eee90a7c.png" alt="Estructura del Taller" style="max-width: 100%; height: auto; border-radius: var(--radius-base);">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="objectives-grid">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>🎯 Objetivos</h3>
+                            <ul>
+                                <li>Comprender los fundamentos de Dinámica de Sistemas</li>
+                                <li>Dominar la interfaz de Insight Maker</li>
+                                <li>Crear modelos SIR y de negocio</li>
+                                <li>Analizar resultados y escenarios</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>⏱️ Duración</h3>
+                            <div class="duration-list">
+                                <div class="duration-item">Introducción: <span>15 min</span></div>
+                                <div class="duration-item">Fundamentos SD: <span>30 min</span></div>
+                                <div class="duration-item">Insight Maker: <span>15 min</span></div>
+                                <div class="duration-item">Ejemplo SIR: <span>30 min</span></div>
+                                <div class="duration-item">Modelo Negocio: <span>25 min</span></div>
+                                <div class="duration-item">Síntesis: <span>5 min</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="intro-actions">
+                    <button class="btn btn--primary btn--lg" onclick="showSection('primitives')">
+                        Comenzar Taller →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Primitivos Básicos -->
+        <section id="primitives" class="section">
+            <div class="section-header">
+                <h1>Primitivos Básicos de Insight Maker</h1>
+                <p>Los elementos fundamentales para construir modelos dinámicos</p>
+            </div>
+            
+            <div class="primitives-grid">
+                <div class="card primitive-card" data-primitive="stock">
+                    <div class="card__body">
+                        <div class="primitive-icon">📦</div>
+                        <h3>Stock</h3>
+                        <p>Almacena material o información en el sistema</p>
+                        <div class="primitive-examples">
+                            <strong>Ejemplos:</strong>
+                            <ul>
+                                <li>Cuenta bancaria</li>
+                                <li>Población</li>
+                                <li>Inventario</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card primitive-card" data-primitive="flow">
+                    <div class="card__body">
+                        <div class="primitive-icon">➡️</div>
+                        <h3>Flow</h3>
+                        <p>Mueve material entre stocks del sistema</p>
+                        <div class="primitive-examples">
+                            <strong>Ejemplos:</strong>
+                            <ul>
+                                <li>Depósitos/Retiros</li>
+                                <li>Nacimientos/Muertes</li>
+                                <li>Compras/Ventas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card primitive-card" data-primitive="variable">
+                    <div class="card__body">
+                        <div class="primitive-icon">🔢</div>
+                        <h3>Variable</h3>
+                        <p>Valores calculados o constantes del modelo</p>
+                        <div class="primitive-examples">
+                            <strong>Ejemplos:</strong>
+                            <ul>
+                                <li>Tasa de interés</li>
+                                <li>Precio</li>
+                                <li>Tasa de crecimiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card primitive-card" data-primitive="link">
+                    <div class="card__body">
+                        <div class="primitive-icon">🔗</div>
+                        <h3>Link</h3>
+                        <p>Conecta información entre primitivos</p>
+                        <div class="primitive-examples">
+                            <strong>Ejemplos:</strong>
+                            <ul>
+                                <li>Relaciones causales</li>
+                                <li>Dependencias</li>
+                                <li>Influencias</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interactive-exercise">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>🎯 Ejercicio Interactivo</h3>
+                        <p>Identifica el tipo de primitivo en cada caso:</p>
+                        <div id="primitiveQuiz" class="quiz-container">
+                            <!-- Quiz content will be added by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulador Modelo SIR -->
+        <section id="sir" class="section">
+            <div class="section-header">
+                <h1>Simulador: Modelo SIR</h1>
+                <p>Modelo epidemiológico Susceptible-Infectado-Recuperado</p>
+            </div>
+            
+            <div class="simulator-layout">
+                <div class="controls-panel">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Parámetros del Modelo</h3>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Población Total: <span id="populationValue">1000</span></label>
+                                <input type="range" id="population" class="form-control" min="500" max="10000" value="1000" step="100">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Infectados Iniciales: <span id="initialInfectedValue">10</span></label>
+                                <input type="range" id="initialInfected" class="form-control" min="1" max="100" value="10" step="1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tasa de Infección: <span id="infectionRateValue">0.3</span></label>
+                                <input type="range" id="infectionRate" class="form-control" min="0.1" max="1.0" value="0.3" step="0.1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tasa de Recuperación: <span id="recoveryRateValue">0.1</span></label>
+                                <input type="range" id="recoveryRate" class="form-control" min="0.05" max="0.5" value="0.1" step="0.05">
+                            </div>
+                            
+                            <div class="control-buttons">
+                                <button class="btn btn--primary" onclick="runSIRSimulation()">Ejecutar Simulación</button>
+                                <button class="btn btn--secondary" onclick="resetSIRSimulation()">Reiniciar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Métricas Clave</h3>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <span class="metric-label">Pico de Infectados:</span>
+                                    <span id="peakInfected" class="metric-value">-</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Día del Pico:</span>
+                                    <span id="peakDay" class="metric-value">-</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Total Afectados:</span>
+                                    <span id="totalAffected" class="metric-value">-</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Duración:</span>
+                                    <span id="duration" class="metric-value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-panel">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Evolución del Modelo SIR</h3>
+                            <div class="chart-container">
+                                <canvas id="sirChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulador Modelo de Negocio -->
+        <section id="business" class="section">
+            <div class="section-header">
+                <h1>Simulador: Modelo de Negocio</h1>
+                <p>Modelo de crecimiento y retención de clientes</p>
+            </div>
+            
+            <div class="simulator-layout">
+                <div class="controls-panel">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Parámetros del Negocio</h3>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Clientes Iniciales: <span id="initialCustomersValue">100</span></label>
+                                <input type="range" id="initialCustomers" class="form-control" min="50" max="500" value="100" step="10">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Presupuesto Marketing: $<span id="marketingBudgetValue">5000</span></label>
+                                <input type="range" id="marketingBudget" class="form-control" min="1000" max="20000" value="5000" step="500">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Costo por Adquisición: $<span id="acquisitionCostValue">50</span></label>
+                                <input type="range" id="acquisitionCost" class="form-control" min="20" max="200" value="50" step="10">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tasa de Abandono: <span id="churnRateValue">5%</span></label>
+                                <input type="range" id="churnRate" class="form-control" min="1" max="20" value="5" step="1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tasa de Referidos: <span id="referralRateValue">2%</span></label>
+                                <input type="range" id="referralRate" class="form-control" min="0" max="10" value="2" step="0.5">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Ingresos por Cliente: $<span id="revenuePerCustomerValue">100</span></label>
+                                <input type="range" id="revenuePerCustomer" class="form-control" min="50" max="500" value="100" step="25">
+                            </div>
+                            
+                            <div class="control-buttons">
+                                <button class="btn btn--primary" onclick="runBusinessSimulation()">Ejecutar Simulación</button>
+                                <button class="btn btn--secondary" onclick="resetBusinessSimulation()">Reiniciar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Métricas de Negocio</h3>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <span class="metric-label">ROI Final:</span>
+                                    <span id="finalROI" class="metric-value">-</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Clientes Finales:</span>
+                                    <span id="finalCustomers" class="metric-value">-</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Ingresos Totales:</span>
+                                    <span id="totalRevenue" class="metric-value">-</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Crecimiento:</span>
+                                    <span id="growthRate" class="metric-value">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-panel">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Evolución del Negocio</h3>
+                            <div class="chart-container">
+                                <canvas id="businessChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos Adicionales -->
+        <section id="resources" class="section">
+            <div class="section-header">
+                <h1>Recursos Trabajo Taller</h1>
+                <p>Guías, ejercicios y material complementario</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>📚 Guía Práctica</h3>
+                        <p>Pasos para crear tu primer modelo en Insight Maker:</p>
+                        <ol>
+                            <li>Accede a <a href="https://insightmaker.com" target="_blank">InsightMaker.com</a></li>
+                            <li>Crea una nueva cuenta gratuita</li>
+                            <li>Selecciona "Nuevo Modelo" &gt; "Dinámica de Sistemas"</li>
+                            <li>Arrastra primitivos desde la barra lateral</li>
+                            <li>Conecta elementos con links</li>
+                            <li>Define ecuaciones para flows y variables</li>
+                            <li>Configura la simulación (tiempo, intervalos)</li>
+                            <li>Ejecuta y analiza resultados</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card__body">
+                        <h3>🏋️ Creación Modelos</h3>
+                        <ul class="resource-links">
+                            <li><a href="https://docs.google.com/presentation/d/1052BQZqBDuoU_cTFF49ya3WvLIgq76UIGht4Snzmp7I/edit?usp=sharing" target="_blank">Diapositivas de introduccion a Insight Maker</a></li>
+                            <li><a href="https://insightmaker.com/docs/sddisease" target="_blank">Guía Paso a Paso para crear el modelo SIR con SD</a></li>
+                            <li><a href="https://insightmaker.com/docs/abmdisease" target="_blank">Guía Paso a Paso para crear el modelo SIR con ABM</a></li>
+                            <li><a href="https://insightmaker.com/docs/predatorprey" target="_blank">Guía Paso a Paso modelo Presa - Depredador</a></li>
+                            <li><a href="https://insightmaker.com/docs/sensitivitytesting" target="_blank">Utilizando la herramienta de Test de Sensibilidad</a></li>
+                            <li><a href="https://1drv.ms/b/c/bcdee0c02f44d16d/EW3RRC_A4N4ggLzkjQIAAAAB9ODrNQYC8XSOjcHVgtHDJA?e=M8OEW9" target="_blank">Problema Coronavirus</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card__body">
+                        <h3>🔗 Ejemplos del Taller</h3>
+                        <ul class="resource-links">
+                            <li><a href="https://1drv.ms/p/c/bcdee0c02f44d16d/EW3RRC_A4N4ggLz7cAIAAAABAf8gQx8NuR6_NJMRMtnfzg?e=auSLvt" target="_blank">Diapositivas Ejemplos Dinámica de Sistemas</a></li>
+                            <li><a href="https://insightmaker.com/insight/M5DqhRDiD3iRx2JwIIkAO" target="_blank">Ejemplo 1: Llenar un Vaso con Agua - BRN</a></li>
+                            <li><a href="https://insightmaker.com/insight/3Zkl7UROZI2an0v5foxalX" target="_blank">Ejemplo 2: Llenar un Vaso con Agua - No Linealidad</a></li>
+                            <li><a href="https://insightmaker.com/insight/6NVivzL6no0WgCazRyt54M" target="_blank">Ejemplo 3: Natalidad - BRP</a></li>
+                            <li><a href="https://insightmaker.com/insight/3pZN0DXr2cT72Twb89x9rH" target="_blank">Ejemplo 4: Propagación de una Epidemia - SIR</a></li>
+                            <li><a href="https://insightmaker.com/insight/646C05620FbmioRiiauYcO" target="_blank">Ejemplo 9: Población de Ballenas - Básico - Comparar Resultados</a></li>
+                            <li><a href="https://insightmaker.com/insight/1azIWAt0BUhKynXsGYxTCT" target="_blank">Ejemplo 10: Población de Ballenas - Factor Limitativo - Sensibilidad</a></li>
+                            <li><a href="https://insightmaker.com/insight/hD9dfQy9QgCg2hGprIBtW" target="_blank">Ejemplo 11: Población de Ballenas - Variable Exógena - Programación</a></li>
+                            <li><a href="https://insightmaker.com/insight/34C99dA1tQhnRyfmyEz66R" target="_blank">Ejemplo 12: Población de Ballenas - Función No Lineal - Programación</a></li>
+                            <li><a href="https://1drv.ms/b/c/bcdee0c02f44d16d/EUSN4advPvpNhtFpo8bikCgBoxqYsfIhHCdmuWIp4s3g4A?e=0tDX32" target="_blank">Problema Cambio Climático - pdf</a></li>
+                            <li><a href="https://insightmaker.com/insight/50nZD9To9qtedW2CJWEjxb" target="_blank">Modelando el Cambio Climático - Interfaz</a></li>
+                            <li><a href="https://insightmaker.com/insight/2zHjh9v7IfSSYYflUUssNO" target="_blank">RD Model and Autoswitch - Usuario Final</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card__body">
+                        <h3>📖 Glosario</h3>
+                        <div class="glossary">
+                            <div class="glossary-item">
+                                <strong>Stock:</strong> Acumulación de material o información en un punto del sistema.
+                            </div>
+                            <div class="glossary-item">
+                                <strong>Flow:</strong> Actividad que cambia un stock a lo largo del tiempo.
+                            </div>
+                            <div class="glossary-item">
+                                <strong>Feedback Loop:</strong> Estructura donde las salidas influyen en las entradas.
+                            </div>
+                            <div class="glossary-item">
+                                <strong>Delay:</strong> Proceso que retrasa el flujo de material o información.
+                            </div>
+                            <div class="glossary-item">
+                                <strong>Causal Link:</strong> Conexión que representa una relación causa-efecto.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Modal para detalles de ejercicios -->
+    <div id="exerciseModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="exerciseDetails">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
